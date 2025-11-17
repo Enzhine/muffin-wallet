@@ -1,0 +1,91 @@
+replicaCount: 3
+
+image:
+  repository: aadan1lov/muffin-wallet
+  pullPolicy: Always
+  tag: ""
+
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podLabels: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8081
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: muffin-wallet.com
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: muffin-wallet
+              port:
+                number: 80
+  tls: []
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8081
+  initialDelaySeconds: 30
+  periodSeconds: 5
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8081
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+volumes:
+  - name: application-config-volume
+    configMap:
+      name: muffin-wallet
+
+volumeMounts:
+  - name: application-config-volume
+    mountPath: /app/config
+
+envFrom:
+  - secretRef:
+      name: muffin-wallet
+  - configMapRef:
+      name: muffin-wallet-env
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+filesConfigMap:
+  name: muffin-wallet
+  files:
+    - "application.yaml"
+
+envsConfigMap:
+  name: muffin-wallet-env
+  data:
+    JDK_JAVA_OPTIONS: -Dspring.config.additional-location=/app/config/application.yaml
+
+envsSecret:
+  name: muffin-wallet
+  data:
+    SPRING_DATASOURCE_PASSWORD: bXVmZmluLXdhbGxldA==

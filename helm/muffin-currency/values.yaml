@@ -1,0 +1,64 @@
+replicaCount: 2
+
+image:
+  repository: docker.io/enzhine/muffin-currency
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podLabels: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8083
+  targetPort: 8080
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path: /rate?from=PLAIN&to=CHOCOLATE
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /rate?from=PLAIN&to=CHOCOLATE
+    port: 8080
+  initialDelaySeconds: 2
+  periodSeconds: 5
+
+volumes:
+  - name: config
+    configMap:
+      name: muffin-currency-cm
+      items:
+        - key: application.json
+          path: application.json
+
+volumeMounts:
+  - name: config
+    mountPath: /config
+    readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+configMap:
+  enabled: true
+  name: muffin-currency-cm
+  files:
+    - "application.json"

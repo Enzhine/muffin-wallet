@@ -1,0 +1,24 @@
+---
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://host.minikube.internal:5432/muffin_wallet
+    username: muffin-wallet
+  liquibase:
+    enabled: false
+
+currency:
+  service:
+    url: http://muffin-currency:8083/rate
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always

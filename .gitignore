@@ -33,3 +33,4 @@ build
 
 # Ignore bin folders
 bin/
+.idea
