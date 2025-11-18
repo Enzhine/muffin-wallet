@@ -26,10 +26,9 @@ spec:
           volumeMounts:
             - name: liquibase-volume
               mountPath: /liquibase/changelog
-          {{- with .Values.envFrom }}
           envFrom:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+            - secretRef:
+                name: muffin-wallet-liquibase
       volumes:
         - name: liquibase-volume
           configMap:
