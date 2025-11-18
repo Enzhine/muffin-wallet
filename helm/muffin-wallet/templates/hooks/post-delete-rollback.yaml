@@ -6,7 +6,7 @@ metadata:
     {{- include "muffin-wallet.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": post-delete,post-rollback
-    "helm.sh/hook-weight": -5
+    "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
