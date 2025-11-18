@@ -27,6 +27,7 @@ spec:
             - "-c"
             - |
               wget -O /liquibase/lib/postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.6.0.jar
+              ls /liquibase/changelog
               
               liquibase \
               --driver={{ .Values.liquibase.driver }} \
