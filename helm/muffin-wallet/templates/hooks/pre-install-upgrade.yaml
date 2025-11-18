@@ -22,7 +22,19 @@ spec:
       containers:
         - name: pre-install-upgrade
           image: "liquibase/liquibase:5.0"
-          command: ["liquibase","--url={{ .Values.liquibase.url }}","--changeLogFile=/liquibase/changelog/db.changelog-master.yaml","--username={{ .Values.liquibase.username }}","--password=$LIQUIBASE_PASSWORD", "update"]
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              wget -O /liquibase/lib/postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.6.0.jar
+              
+              liquibase \
+              --driver={{ .Values.liquibase.driver }} \
+              --url={{ .Values.liquibase.url }} \
+              --changeLogFile=/liquibase/changelog/db.changelog-master.yaml \
+              --username={{ .Values.liquibase.username }} \
+              --password=$LIQUIBASE_PASSWORD \
+              update
           volumeMounts:
             - name: liquibase-volume
               mountPath: /liquibase/changelog
