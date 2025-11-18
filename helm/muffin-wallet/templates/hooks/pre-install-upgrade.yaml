@@ -20,7 +20,7 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - name: liquibase-execute
+        - name: pre-install-upgrade
           image: "liquibase/liquibase:5.0"
           command: ["liquibase","--driver={{ .Values.liquibase.driver }}","--url={{ .Values.liquibase.url }}","--changeLogFile=/liquibase/changelog/db.changelog-master.yaml","--username={{ .Values.liquibase.username }}","--password=$LIQUIBASE_PASSWORD"]
           volumeMounts:
