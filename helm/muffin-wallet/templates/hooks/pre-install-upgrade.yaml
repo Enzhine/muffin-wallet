@@ -27,7 +27,24 @@ spec:
             - "-c"
             - |
               wget -O /liquibase/lib/postgresql.jar https://jdbc.postgresql.org/download/postgresql-42.6.0.jar
-              ls /liquibase/changelog
+              
+              echo "=== Checking file structure ==="
+              echo "Current directory: $(pwd)"
+              echo "LS of /liquibase:"
+              ls -la /liquibase/
+              echo "LS of /liquibase/changelog:"
+              ls -la /liquibase/changelog/
+              echo "LS of /liquibase/changelog/ recursively:"
+              find /liquibase/changelog/ -type f -name "*.yaml" -o -name "*.yml" -o -name "*.xml" | head -20
+              
+              echo "=== File contents ==="
+              find /liquibase/changelog/ -name "*.yaml" -o -name "*.yml" | while read file; do
+                echo "=== $file ==="
+                head -5 "$file"
+              done
+              
+              echo "=== Testing file existence ==="
+              test -f /liquibase/changelog/db.changelog-master.yaml && echo "MASTER FILE EXISTS" || echo "MASTER FILE MISSING"
               
               liquibase \
               --driver={{ .Values.liquibase.driver }} \
