@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: 0.0.0-changelog.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 1.0.0-changelog.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 1.1.0-changelog.sql
+      relativeToChangelogFile: true

@@ -89,3 +89,16 @@ envsSecret:
   name: muffin-wallet
   data:
     SPRING_DATASOURCE_PASSWORD: bXVmZmluLXdhbGxldA==
+    LIQUIBASE_PASSWORD: bXVmZmluLXdhbGxldA==
+
+liquibase:
+  driver: org.postgresql.Driver
+  url: jdbc:postgresql://host.minikube.internal:5432/muffin_wallet
+  username: muffin-wallet
+
+liquibaseConfigMap:
+  files:
+    - "0.0.0-changelog.sql"
+    - "1.0.0-changelog.sql"
+    - "1.1.0-changelog.sql"
+    - "db.changelog-master.yaml"

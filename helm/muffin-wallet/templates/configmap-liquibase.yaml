@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: muffin-wallet-liquibase
+  labels:
+    {{- include "muffin-wallet.labels" . | nindent 4 }}
+data:
+  {{- range .Values.liquibaseConfigMap.files }}
+  {{ . }}: |-
+    {{- $.Files.Get (printf "files/%s" .) | nindent 4 }}
+  {{- end }}

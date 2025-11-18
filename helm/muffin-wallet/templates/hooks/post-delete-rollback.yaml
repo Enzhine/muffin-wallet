@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "muffin-wallet.fullname" . }}
+  labels:
+    {{- include "muffin-wallet.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-delete,post-rollback
+    "helm.sh/hook-weight": -5
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        {{- include "muffin-wallet.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: liquibase-execute
+          image: "liquibase/liquibase:5.0"
+          command: ["liquibase","--driver={{ .Values.liquibase.driver }}","--url={{ .Values.liquibase.url }}","--changeLogFile=/liquibase/changelog/db.changelog-master.yaml","--username={{ .Values.liquibase.username }}","--password=$LIQUIBASE_PASSWORD", "rollbacktag=0.0.0"]
+          volumeMounts:
+            - name: liquibase-volume
+              mountPath: /liquibase/changelog
+          {{- with .Values.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: liquibase-volume
+          configMap:
+            name: muffin-wallet-liquibase
