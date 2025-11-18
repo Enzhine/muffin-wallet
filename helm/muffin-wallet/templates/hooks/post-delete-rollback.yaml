@@ -21,7 +21,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: post-delete-rollback
-          image: "liquibase/liquibase:5.0"
+          image: "liquibase/liquibase:4.23"
           command:
             - "/bin/sh"
             - "-c"
