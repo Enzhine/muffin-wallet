@@ -7,7 +7,7 @@ spring:
     url: jdbc:postgresql://host.minikube.internal:5432/muffin_wallet
     username: muffin-wallet
   liquibase:
-    enabled: false
+    enabled: true
 
 currency:
   service:
@@ -16,9 +16,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, info
+        include: health, info, prometheus, metrics
   endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
     health:
       probes:
         enabled: true
       show-details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true

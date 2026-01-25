@@ -1,0 +1,52 @@
+prometheus:
+  enabled: true
+
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          storageClassName: "standard"
+          resources:
+            requests:
+              storage: 20Gi
+
+    retention: 7d
+    retentionSize: "20GB"
+
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+
+    thanos: {}
+
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+    podMonitorSelector: {}
+    podMonitorNamespaceSelector: {}
+    probeSelector: {}
+    probeNamespaceSelector: {}
+
+    additionalScrapeConfigs: []
+
+# Alertmanager disabled
+alertmanager:
+  enabled: false
+
+# Grafana enabled
+grafana:
+  enabled: true
+  adminPassword: "admin"
+  persistence:
+    enabled: true
+    type: "pvc"
+    size: 5Gi
+    accessModes: ["ReadWriteOnce"]
+    storageClassName: "standard"
+
+# Node exported disabled
+prometheus-node-exporter:
+  enabled: false
+
+# Kube metrics enabled
+kube-state-metrics:
+  enabled: true
