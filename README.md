@@ -119,3 +119,12 @@ Custom dashboard for muffin-wallet is saved as `muffin-wallet-dashboard.json` an
 
 After playing with Rest API via Swagger-UI we can see this:
 ![img.png](doc/img8.png)
+
+
+### How to check dashboard
+
+Import `muffin-wallet-dashboard.json` dashboard into Grafana.
+
+RPS and 99 percentile: Open swagger and execute some methods.
+Errors: Disable muffin-currency or execute with unknown wallet to get an error.
+Active connections pool: try to spam multiple transaction requests in parallel.
