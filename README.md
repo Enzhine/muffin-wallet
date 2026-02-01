@@ -90,7 +90,7 @@ helm install muffin-wallet .\muffin-wallet
 Check default namespace and CRD for successful startup:
 ```shell
 kubectl get all
-kubectl get servicemonitor/muffin-wallet -n monitoring
+kubectl get servicemonitor -n monitoring
 ```
 ![img.png](doc/img5.png)
 ![img.png](doc/img6.png)
