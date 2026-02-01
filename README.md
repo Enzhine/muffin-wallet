@@ -2,7 +2,8 @@
 
 Metrics, logs and traces collection implemented.
 
-Prometheus + Loki + Zipkin with Long-term volumes.
+Prometheus + Loki with Long-term volumes.
+Zipkin is not configured for persistent storage.
 
 ## Tutorial
 
@@ -16,8 +17,7 @@ Minikube also should contain nginx-ingress addon.
 
 We will set long-term persistent volumes for:
 - `Prometheus`: `15Gi`, `7d retention`
-- `Loki`: `5Gi`
-- `Zipkin`: `5Gi`
+- `Loki`: `10Gi`
 - `Grafana`: `1Gi`
 
 ### Minikube memory extension

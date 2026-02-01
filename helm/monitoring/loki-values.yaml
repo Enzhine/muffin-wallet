@@ -9,7 +9,7 @@ loki:
 
   persistence:
     enabled: true
-    size: 5Gi
+    size: 10Gi
     config:
       auth_enabled: false
 
