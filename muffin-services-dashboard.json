@@ -2,19 +2,19 @@
   "apiVersion": "dashboard.grafana.app/v2beta1",
   "kind": "Dashboard",
   "metadata": {
-    "name": "adzmbvg",
+    "name": "adsxxrn",
     "namespace": "default",
-    "uid": "Xh1csn39S67KzveJVgz43LeQVyjB7oMCk5HDQFJFf5QX",
+    "uid": "sJ9vBYCw7lzkAMjRgVHgKdzRg7cg1sgGTdUCtdKOVX4X",
     "resourceVersion": "1",
-    "generation": 4,
-    "creationTimestamp": "2026-02-01T15:02:27Z",
+    "generation": 2,
+    "creationTimestamp": "2026-02-01T18:34:11Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "28"
+      "grafana.app/deprecatedInternalID": "29"
     },
     "annotations": {
-      "grafana.app/createdBy": "user:cfbx5z0867im8b",
-      "grafana.app/updatedBy": "user:cfbx5z0867im8b",
-      "grafana.app/updatedTimestamp": "2026-02-01T15:02:27Z",
+      "grafana.app/createdBy": "user:afbya3cysgqv4a",
+      "grafana.app/updatedBy": "user:afbya3cysgqv4a",
+      "grafana.app/updatedTimestamp": "2026-02-01T18:34:11Z",
       "grafana.app/folder": ""
     }
   },
@@ -43,362 +43,6 @@
     "cursorSync": "Off",
     "editable": true,
     "elements": {
-      "panel-1": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval]))",
-                        "legendFormat": "{{method}} {{status}} {{uri}}",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval]))",
-                        "legendFormat": "{{method}} {{status}} {{uri}}",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "B"
-                  }
-                },
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval]))",
-                        "instant": false,
-                        "legendFormat": "{{method}} {{status}} {{uri}}",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "C"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 1,
-          "links": [],
-          "title": "RPS",
-          "vizConfig": {
-            "group": "timeseries",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisBorderShow": false,
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "barWidthFactor": 0.6,
-                    "drawStyle": "line",
-                    "fillOpacity": 0,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "insertNulls": false,
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "auto",
-                    "showValues": false,
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "reqps"
-                },
-                "overrides": []
-              },
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "hideZeros": false,
-                  "mode": "single",
-                  "sort": "none"
-                }
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
-      "panel-12": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "P8E80F9AEF21F6940"
-                      },
-                      "group": "loki",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "direction": "backward",
-                        "editorMode": "builder",
-                        "expr": "{level=\"$level\"}",
-                        "queryType": "range"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": [
-                {
-                  "kind": "extractFields",
-                  "spec": {
-                    "id": "extractFields",
-                    "options": {
-                      "delimiter": ",",
-                      "format": "json",
-                      "jsonPaths": [
-                        {
-                          "alias": "",
-                          "path": "level"
-                        },
-                        {
-                          "alias": "",
-                          "path": "app"
-                        },
-                        {
-                          "alias": "",
-                          "path": "traceId"
-                        },
-                        {
-                          "alias": "",
-                          "path": "spanId"
-                        }
-                      ],
-                      "keepTime": false,
-                      "replace": false,
-                      "source": "labels"
-                    }
-                  }
-                },
-                {
-                  "kind": "organize",
-                  "spec": {
-                    "id": "organize",
-                    "options": {
-                      "excludeByName": {
-                        "id": true,
-                        "labels": true,
-                        "level": false,
-                        "spanId": false,
-                        "traceId": false,
-                        "tsNs": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {
-                        "Line": 4,
-                        "Time": 6,
-                        "app": 5,
-                        "id": 8,
-                        "labels": 3,
-                        "level": 2,
-                        "spanId": 1,
-                        "traceId": 0,
-                        "tsNs": 7
-                      },
-                      "orderByMode": "manual",
-                      "renameByName": {
-                        "Line": "",
-                        "labels": "",
-                        "level": "",
-                        "spanId": "Span id",
-                        "traceId": "Trace id"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "description": "",
-          "id": 12,
-          "links": [],
-          "title": "Loki logs",
-          "vizConfig": {
-            "group": "table",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "filterable": true,
-                    "footer": {
-                      "reducers": []
-                    },
-                    "hideFrom": {
-                      "viz": false
-                    },
-                    "inspect": false,
-                    "wrapHeaderText": false,
-                    "wrapText": true
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Time"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 160
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Line"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 438
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "level"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 79
-                      }
-                    ]
-                  }
-                ]
-              },
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": [
-                  {
-                    "desc": true,
-                    "displayName": "Time"
-                  }
-                ]
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
       "panel-15": {
         "kind": "Panel",
         "spec": {
@@ -702,7 +346,7 @@
           }
         }
       },
-      "panel-2": {
+      "panel-20": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -721,175 +365,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"4..\"})",
-                        "legendFormat": "{{pod}}",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 2,
-          "links": [],
-          "title": "4XX Errors count",
-          "vizConfig": {
-            "group": "stat",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "orange",
-                        "value": 0
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "percentChangeColorMode": "standard",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
-      "panel-3": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"5..\"})",
-                        "legendFormat": "{{pod}}",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 3,
-          "links": [],
-          "title": "5XX Errors count",
-          "vizConfig": {
-            "group": "stat",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 0
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "percentChangeColorMode": "standard",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
-      "panel-4": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "histogram_quantile(0.99, sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval])))",
+                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval]))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -910,7 +386,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval])))",
+                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval]))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -931,7 +407,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval])))",
+                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval]))",
                         "instant": false,
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
@@ -947,94 +423,9 @@
             }
           },
           "description": "",
-          "id": 4,
+          "id": 20,
           "links": [],
-          "title": "Request execution .99",
-          "vizConfig": {
-            "group": "stat",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "s"
-                },
-                "overrides": []
-              },
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "percentChangeColorMode": "standard",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
-      "panel-5": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "prometheus"
-                      },
-                      "group": "prometheus",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "editorMode": "code",
-                        "expr": "sum by (service) (hikaricp_connections_active{service=\"muffin-wallet\"})",
-                        "legendFormat": "All pods",
-                        "range": true
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 5,
-          "links": [],
-          "title": "Active connections",
+          "title": "RPS",
           "vizConfig": {
             "group": "timeseries",
             "kind": "VizConfig",
@@ -1090,7 +481,8 @@
                         "value": 80
                       }
                     ]
-                  }
+                  },
+                  "unit": "reqps"
                 },
                 "overrides": []
               },
@@ -1112,7 +504,7 @@
           }
         }
       },
-      "panel-6": {
+      "panel-21": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -1204,7 +596,605 @@
             }
           },
           "description": "",
-          "id": 6,
+          "id": 21,
+          "links": [],
+          "title": "Logs",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "hideFrom": {
+                      "viz": false
+                    },
+                    "inspect": false,
+                    "wrapHeaderText": false,
+                    "wrapText": true
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Time"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 94
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Line"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 438
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Level"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 81
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "Time"
+                  }
+                ]
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-22": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"5..\"})",
+                        "legendFormat": "{{pod}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 22,
+          "links": [],
+          "title": "5XX Errors count",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 0
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-23": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"4..\"})",
+                        "legendFormat": "{{pod}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 23,
+          "links": [],
+          "title": "4XX Errors count",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "orange",
+                        "value": 0
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "histogram_quantile(0.99, sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval])))",
+                        "legendFormat": "{{method}} {{status}} {{uri}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval])))",
+                        "legendFormat": "{{method}} {{status}} {{uri}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "{{method}} {{status}} {{uri}}",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "C"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 24,
+          "links": [],
+          "title": "Request execution .99",
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-25": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "prometheus"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "sum by (service) (hikaricp_connections_active{service=\"muffin-wallet\"})",
+                        "legendFormat": "All pods",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 25,
+          "links": [],
+          "title": "Active connections",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-27": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "P8E80F9AEF21F6940"
+                      },
+                      "group": "loki",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "direction": "backward",
+                        "editorMode": "builder",
+                        "expr": "{level=\"$level\", traceId=\"$traceId\"} |= ``",
+                        "queryType": "range"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "extractFields",
+                  "spec": {
+                    "id": "extractFields",
+                    "options": {
+                      "delimiter": ",",
+                      "format": "json",
+                      "jsonPaths": [
+                        {
+                          "alias": "Level",
+                          "path": "level"
+                        },
+                        {
+                          "alias": "Trace id",
+                          "path": "traceId"
+                        },
+                        {
+                          "alias": "Span id",
+                          "path": "spanId"
+                        }
+                      ],
+                      "keepTime": false,
+                      "replace": false,
+                      "source": "labels"
+                    }
+                  }
+                },
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "id": true,
+                        "labels": true,
+                        "level": false,
+                        "tsNs": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Level": 2,
+                        "Line": 3,
+                        "Span id": 1,
+                        "Time": 4,
+                        "Trace id": 0,
+                        "id": 7,
+                        "labels": 5,
+                        "tsNs": 6
+                      },
+                      "orderByMode": "manual",
+                      "renameByName": {
+                        "labels": "",
+                        "level": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 27,
           "links": [],
           "title": "Logs",
           "vizConfig": {
@@ -1267,7 +1257,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 438
+                        "value": 686
                       }
                     ]
                   },
@@ -1279,7 +1269,31 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 81
+                        "value": 67
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Trace id"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 281
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Span id"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 139
                       }
                     ]
                   }
@@ -1300,116 +1314,7 @@
           }
         }
       },
-      "panel-8": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "P92163275D6A014C9"
-                      },
-                      "group": "zipkin",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "query": "$traceId",
-                        "queryType": "traceID"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": [
-                {
-                  "kind": "organize",
-                  "spec": {
-                    "id": "organize",
-                    "options": {
-                      "excludeByName": {
-                        "logs": true,
-                        "parentSpanID": true,
-                        "serviceTags": true,
-                        "tags": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {},
-                      "renameByName": {
-                        "serviceName": "Service"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "description": "",
-          "id": 8,
-          "links": [],
-          "title": "Zipkin traces",
-          "vizConfig": {
-            "group": "table",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "filterable": true,
-                    "footer": {
-                      "reducers": []
-                    },
-                    "hideFrom": {
-                      "viz": false
-                    },
-                    "inspect": false
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": [
-                  {
-                    "desc": false,
-                    "displayName": "startTime"
-                  }
-                ]
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
-      "panel-9": {
+      "panel-28": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -1429,7 +1334,7 @@
                       "spec": {
                         "direction": "backward",
                         "editorMode": "builder",
-                        "expr": "{level=\"$level\", traceId=\"$traceId\"}",
+                        "expr": "{level=\"$level\"} |= ``",
                         "queryType": "range"
                       },
                       "version": "v0"
@@ -1449,19 +1354,15 @@
                       "format": "json",
                       "jsonPaths": [
                         {
-                          "alias": "",
+                          "alias": "Level",
                           "path": "level"
                         },
                         {
-                          "alias": "",
-                          "path": "app"
-                        },
-                        {
-                          "alias": "",
+                          "alias": "Trace id",
                           "path": "traceId"
                         },
                         {
-                          "alias": "",
+                          "alias": "Span id",
                           "path": "spanId"
                         }
                       ],
@@ -1480,29 +1381,23 @@
                         "id": true,
                         "labels": true,
                         "level": false,
-                        "spanId": false,
-                        "traceId": false,
                         "tsNs": true
                       },
                       "includeByName": {},
                       "indexByName": {
-                        "Line": 4,
-                        "Time": 6,
-                        "app": 5,
-                        "id": 8,
-                        "labels": 3,
-                        "level": 2,
-                        "spanId": 1,
-                        "traceId": 0,
-                        "tsNs": 7
+                        "Level": 2,
+                        "Line": 3,
+                        "Span id": 1,
+                        "Time": 4,
+                        "Trace id": 0,
+                        "id": 7,
+                        "labels": 5,
+                        "tsNs": 6
                       },
                       "orderByMode": "manual",
                       "renameByName": {
-                        "Line": "",
                         "labels": "",
-                        "level": "",
-                        "spanId": "Span id",
-                        "traceId": "Trace id"
+                        "level": ""
                       }
                     }
                   }
@@ -1511,9 +1406,9 @@
             }
           },
           "description": "",
-          "id": 9,
+          "id": 28,
           "links": [],
-          "title": "Loki logs",
+          "title": "Logs",
           "vizConfig": {
             "group": "table",
             "kind": "VizConfig",
@@ -1574,19 +1469,43 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 438
+                        "value": 711
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "level"
+                      "options": "Level"
                     },
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 79
+                        "value": 63
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Trace id"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 281
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Span id"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 139
                       }
                     ]
                   }
@@ -1606,39 +1525,117 @@
             "version": "12.3.1"
           }
         }
+      },
+      "panel-29": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "P92163275D6A014C9"
+                      },
+                      "group": "zipkin",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "query": "$traceId",
+                        "queryType": "traceID"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "logs": true,
+                        "parentSpanID": true,
+                        "serviceTags": true,
+                        "tags": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {
+                        "parentSpanID": "",
+                        "serviceName": "Service",
+                        "spanID": "Span id",
+                        "traceID": "Trace id"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 29,
+          "links": [],
+          "title": "Traces",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "hideFrom": {
+                      "viz": false
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
       }
     },
     "layout": {
       "kind": "GridLayout",
       "spec": {
-        "items": [
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-16"
-              },
-              "height": 7,
-              "width": 8,
-              "x": 0,
-              "y": 37
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-15"
-              },
-              "height": 7,
-              "width": 16,
-              "x": 8,
-              "y": 37
-            }
-          }
-        ]
+        "items": []
       }
     },
     "links": [],
@@ -1660,7 +1657,7 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-1h",
+      "from": "now-30m",
       "hideTimepicker": false,
       "timezone": "browser",
       "to": "now"
@@ -1690,8 +1687,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "697f7a1ec86929b8d774e85f5854b87b",
-            "value": "697f7a1ec86929b8d774e85f5854b87b"
+            "text": "697f9b86741b6ba6cc185e3a35d31d98",
+            "value": "697f9b86741b6ba6cc185e3a35d31d98"
           },
           "hide": "dontHide",
           "includeAll": false,

@@ -159,7 +159,7 @@ Muffin-currency:
 
 Dashboard preview:
 ![img.png](doc/img8.png)
-
+![img.png](doc/img12.png)
 
 ### How to check dashboard
 
