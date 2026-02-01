@@ -1,9 +1,9 @@
 replicaCount: 2
 
 image:
-  repository: aadan1lov/muffin-wallet
+  repository: enzhine/muffin-wallet
   pullPolicy: Always
-  tag: "1.1.0"
+  tag: "1.2.0"
 
 imagePullSecrets: []
 
@@ -54,15 +54,6 @@ readinessProbe:
   initialDelaySeconds: 120
   periodSeconds: 10
 
-volumes:
-  - name: application-config-volume
-    configMap:
-      name: muffin-wallet
-
-volumeMounts:
-  - name: application-config-volume
-    mountPath: /app/config
-
 envFrom:
   - secretRef:
       name: muffin-wallet
@@ -84,9 +75,40 @@ filesConfigMap:
 envsConfigMap:
   name: muffin-wallet-env
   data:
-    JDK_JAVA_OPTIONS: -Dspring.config.additional-location=/app/config/application.yaml
+    JDK_JAVA_OPTIONS: -Dspring.config.additional-location=/app/config/application.yaml -Dlogging.config=file:/app/config/logback-spring.xml
 
 envsSecret:
   name: muffin-wallet
   data:
     SPRING_DATASOURCE_PASSWORD: bXVmZmluLXdhbGxldA==
+
+volumes:
+  - name: application-config-volume
+    configMap:
+      name: muffin-wallet
+  - name: alloy-config-volume
+    configMap:
+      name: muffin-wallet-alloy
+  - name: application-logs-volume
+    emptyDir: {}
+
+volumeMounts:
+  - name: application-config-volume
+    mountPath: /app/config
+  - name: application-logs-volume
+    mountPath: /app/logs
+
+alloy:
+  image:
+    repository: grafana/alloy
+    tag: v1.13.0-rc.2
+  volumeMounts:
+    - name: alloy-config-volume
+      mountPath:  /etc/alloy
+    - name: application-logs-volume
+      mountPath: /var/log/app
+      readOnly: true
+  filesConfigMap:
+    name: muffin-wallet-alloy
+    files:
+      - "config.alloy"

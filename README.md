@@ -110,6 +110,11 @@ We can see that all pods metrics are scraped.
 
 ### Accessing muffin-wallet
 
+Install ingress addon (in case not installed yet):
+```shell
+minikube addons enable ingress
+```
+
 Start tunnel:
 ```shell
 minikube tunnel
@@ -135,20 +140,30 @@ It already contains default dashboards for K8S:
 Kubernetes / API server example (takes a while to load):
 ![img.png](doc/img4.png)
 
-Custom dashboard for muffin-wallet is saved as `muffin-wallet-dashboard.json` and contains:
+Custom dashboard for muffin-services is saved as `muffin-services-dashboard.json` and contains following:
+
+Both services:
+- Search traces and logs by 'Log level' and 'Trace id'
+- Search logs by 'Log level'
+
+Muffin-wallet:
 - RPS for each method
 - Application errors (4XX and 5XXX)
 - 99-percentile of requests execution
 - Active connections pool count
+- Latest logs
 
-After playing with Rest API via Swagger-UI we can see this:
+Muffin-currency:
+- RPS for each method
+- Latest logs
+
+Dashboard preview:
 ![img.png](doc/img8.png)
 
 
 ### How to check dashboard
 
-Import `muffin-wallet-dashboard.json` dashboard into Grafana.
-
-RPS and 99 percentile: Open swagger and execute some methods.
-Errors: Disable muffin-currency or execute with unknown wallet to get an error.
-Active connections pool: try to spam multiple transaction requests in parallel.
+Import `muffin-services-dashboard.json` dashboard into Grafana and check following:
+- RPS, 99 percentile, Logs and traces: Open swagger and execute some methods.
+- Errors: Disable muffin-currency or execute with unknown wallet to get an error.
+- Active connections pool: try to spam multiple transaction requests in parallel.

@@ -9,23 +9,21 @@
 
     <!-- JSON File Appender -->
     <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/application.json</file>
+        <file>app/logs/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/application-%d{yyyy-MM-dd}.json</fileNamePattern>
+            <fileNamePattern>app/logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <includeContext>false</includeContext>
             <includeMdc>true</includeMdc>
             <timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSSZ</timestampPattern>
-            <customFields>{"application":"muffin-wallet"}</customFields>
             <fieldNames>
                 <timestamp>timestamp</timestamp>
                 <message>message</message>
                 <logger>logger</logger>
                 <thread>thread</thread>
                 <level>level</level>
-                <levelValue>level_value</levelValue>
                 <stackTrace>stack_trace</stackTrace>
                 <mdc>
                     <traceId>traceId</traceId>

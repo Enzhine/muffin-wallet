@@ -1,0 +1,49 @@
+loki.source.file "json_logs" {
+  targets = local.file_match.find_logs.targets
+  forward_to = [loki.process.json_parser.receiver]
+}
+
+local.file_match "find_logs" {
+    path_targets = [{"__path__" = "/var/log/app/*.log"}]
+}
+
+loki.process "json_parser" {
+  stage.json {
+    expressions = {
+      timestamp = "timestamp",
+      message = "message",
+      level = "level",
+      traceId = "traceId",
+      spanId = "spanId",
+    }
+  }
+
+  stage.output {
+    source = "message"
+  }
+
+  stage.labels {
+    values = {
+      level = "",
+      traceId = "",
+      spanId = "",
+    }
+  }
+
+  stage.timestamp {
+    source = "timestamp"
+    format = "RFC3339"
+  }
+
+  forward_to = [loki.write.loki.receiver]
+}
+
+loki.write "loki" {
+  endpoint {
+    url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
+  }
+  external_labels = {
+    namespace = "default",
+    app = "muffin-wallet",
+  }
+}

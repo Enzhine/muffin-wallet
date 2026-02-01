@@ -3,6 +3,8 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: muffin-wallet
   datasource:
     url: jdbc:postgresql://host.minikube.internal:5432/muffin_wallet
     username: muffin-wallet
@@ -14,11 +16,14 @@ currency:
     url: http://muffin-currency:8083/rate
 
 management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin.monitoring.svc.cluster.local:9411/api/v2/spans
+      connect-timeout: 10s
+      read-timeout: 30s
   tracing:
     sampling:
       probability: 1.0
-  zipkin:
-    endpoint: http://zipkin.monitoring:9411/api/v2/spans
   endpoints:
     web:
       exposure:
