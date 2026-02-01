@@ -79,6 +79,7 @@ filesConfigMap:
   name: muffin-wallet
   files:
     - "application.yaml"
+    - "logback-spring.xml"
 
 envsConfigMap:
   name: muffin-wallet-env

@@ -1,0 +1,35 @@
+prometheus:
+  enabled: false
+
+loki:
+  enabled: true
+  isDefault: false
+  image:
+    tag: "2.9.3"
+
+  persistence:
+    enabled: true
+    size: 5Gi
+    config:
+      auth_enabled: false
+
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: http-metrics
+    initialDelaySeconds: 45
+
+  livenessProbe:
+    httpGet:
+      path: /ready
+      port: http-metrics
+    initialDelaySeconds: 45
+
+promtail:
+  enabled: false
+
+grafana:
+  enabled: false
+
+tempo:
+  enabled: false

@@ -1,26 +1,30 @@
 # Muffin wallet
 
-Prometheus Operator with Long-term volume.
+Metrics, logs and traces collection implemented.
+
+Prometheus + Loki + Zipkin with Long-term volumes.
 
 ## Tutorial
 
-
 ### Requirements
+
+This setup target is minikube cluster.
 
 Helm utility must be installed.
 
-This setup target is minikube cluster.
-But prometheus can generate lots of data.
-We will assume that prometheus requires 20GB for 7d retention
-and Grafana requires 5GB for dashboards data.
-Thus, it will require at least 25GB of single cluster node data,
-but minikube usually allocates less VM memory.
-We need to allocate more.
-
 Minikube also should contain nginx-ingress addon.
 
+We will set long-term persistent volumes for:
+- `Prometheus`: `15Gi`, `7d retention`
+- `Loki`: `5Gi`
+- `Zipkin`: `5Gi`
+- `Grafana`: `1Gi`
 
 ### Minikube memory extension
+
+It will require at least 26GB of single cluster node data,
+but minikube usually allocates less VM memory.
+We need to allocate more.
 
 Stop and delete existing cluster.
 ```shell
@@ -28,7 +32,7 @@ minikube stop
 minikube delete
 ```
 
-Allocate 35GB (required 25 + extra 10) for minikube and start.
+Allocate 35GB (required + ~10Gi) for minikube and start.
 ```shell
 minikube config set disk-size 35GB
 minikube start
@@ -37,15 +41,31 @@ minikube start
 ### Installation
 
 Move to the `/helm` project folder.
-Add Prometheus Operator repository:
+Add Prometheus Operator and Loki repositories:
 ```shell
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add openzipkin https://openzipkin.github.io/zipkin-helm
 helm repo update
 ```
 
-Install Prometheus Operator:
+First, install Loki-stack:
 ```shell
-helm install prometheus prometheus-community/kube-prometheus-stack -f ./monitoring/prometheus-values.yaml --namespace monitoring --create-namespace
+helm install loki grafana/loki-stack -f ./monitoring/loki-values.yaml --namespace monitoring --create-namespace
+```
+You should see success message:
+![img.png](doc/img9.png)
+
+Secondly, install Zipkin:
+```shell
+helm install zipkin openzipkin/zipkin -f ./monitoring/zipkin-values.yaml --namespace monitoring
+```
+You should see success message:
+![img.png](doc/img10.png)
+
+Then, install Prometheus Operator (might be some CRD errors, just repeat):
+```shell
+helm install prometheus prometheus-community/kube-prometheus-stack -f ./monitoring/prometheus-values.yaml --namespace monitoring
 ```
 You should see success message:
 ![img.png](doc/img.png)
@@ -106,6 +126,10 @@ Port-forward Grafana:
 kubectl port-forward svc/prometheus-grafana 3000:80 -n monitoring
 ```
 Access it via `http://localhost:3000/login`. Login with `admin` and `admin` password.
+
+Check datasources, it should contain Loki, Prometheus and Zipkin:
+![img.png](doc/img11.png)
+
 It already contains default dashboards for K8S:
 ![img.png](doc/img3.png)
 Kubernetes / API server example (takes a while to load):

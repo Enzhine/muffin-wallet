@@ -12,7 +12,13 @@ spring:
 currency:
   service:
     url: http://muffin-currency:8083/rate
+
 management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    endpoint: http://zipkin.monitoring:9411/api/v2/spans
   endpoints:
     web:
       exposure:

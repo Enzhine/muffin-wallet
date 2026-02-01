@@ -35,13 +35,50 @@ alertmanager:
 # Grafana enabled
 grafana:
   enabled: true
-  adminPassword: "admin"
+  adminUser: admin
+  adminPassword: admin
+  replicaCount: 1
+
   persistence:
     enabled: true
     type: "pvc"
-    size: 5Gi
+    size: 1Gi
     accessModes: ["ReadWriteOnce"]
     storageClassName: "standard"
+
+  securityContext:
+    runAsUser: 472
+    fsGroup: 472
+
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+    initialDelaySeconds: 120
+    timeoutSeconds: 10
+    periodSeconds: 15
+    failureThreshold: 10
+
+  livenessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+    initialDelaySeconds: 180
+    timeoutSeconds: 10
+    periodSeconds: 30
+    failureThreshold: 5
+
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki.monitoring:3100
+      isDefault: false
+    - name: Zipkin
+      type: zipkin
+      access: proxy
+      url: http://zipkin.monitoring:9411
+      isDefault: false
 
 # Node exported disabled
 prometheus-node-exporter:
