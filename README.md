@@ -25,7 +25,12 @@ To setup this stack, following requirements must be met:
 
 ## Installation
 
-Move to `helm` directory.
+Locate to `/local-env` folder and boot up docker-compose like:
+```shell
+docker compose up
+```
+
+Move to `/helm` directory.
 Execute command:
 ```shell
 helmfile sync
