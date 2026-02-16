@@ -57,13 +57,8 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-        - name: alloy-sidecar
-          image: "{{ .Values.alloy.image.repository }}:{{ .Values.alloy.image.tag }}"
-          args:
-            - run
-            - /etc/alloy/config.alloy
-          {{- with .Values.alloy.volumeMounts }}
-          volumeMounts:
+          {{- with .Values.envFrom }}
+          envFrom:
             {{- toYaml . | nindent 12 }}
           {{- end }}
       {{- with .Values.volumes }}

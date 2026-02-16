@@ -42,7 +42,7 @@ grafana:
   persistence:
     enabled: true
     type: "pvc"
-    size: 1Gi
+    size: 5Gi
     accessModes: ["ReadWriteOnce"]
     storageClassName: "standard"
 
@@ -74,10 +74,10 @@ grafana:
       access: proxy
       url: http://loki.monitoring:3100
       isDefault: false
-    - name: Zipkin
-      type: zipkin
+    - name: Tempo
+      type: tempo
       access: proxy
-      url: http://zipkin.monitoring:9411
+      url: http://tempo.monitoring:3200
       isDefault: false
 
 # Node exported disabled

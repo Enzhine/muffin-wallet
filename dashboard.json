@@ -2,19 +2,19 @@
   "apiVersion": "dashboard.grafana.app/v2beta1",
   "kind": "Dashboard",
   "metadata": {
-    "name": "adsxxrn",
+    "name": "adgzwnc",
     "namespace": "default",
-    "uid": "sJ9vBYCw7lzkAMjRgVHgKdzRg7cg1sgGTdUCtdKOVX4X",
+    "uid": "GejjyZQ2myYkXKFWeKh3jA7XKBBlSYhmjZGu8vkD4EEX",
     "resourceVersion": "1",
     "generation": 2,
-    "creationTimestamp": "2026-02-01T18:34:11Z",
+    "creationTimestamp": "2026-02-16T19:37:22Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "29"
+      "grafana.app/deprecatedInternalID": "30"
     },
     "annotations": {
-      "grafana.app/createdBy": "user:afbya3cysgqv4a",
-      "grafana.app/updatedBy": "user:afbya3cysgqv4a",
-      "grafana.app/updatedTimestamp": "2026-02-01T18:34:11Z",
+      "grafana.app/createdBy": "user:dfdfyfqvpd88we",
+      "grafana.app/updatedBy": "user:dfdfyfqvpd88we",
+      "grafana.app/updatedTimestamp": "2026-02-16T19:37:22Z",
       "grafana.app/folder": ""
     }
   },
@@ -43,194 +43,6 @@
     "cursorSync": "Off",
     "editable": true,
     "elements": {
-      "panel-15": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "P8E80F9AEF21F6940"
-                      },
-                      "group": "loki",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "direction": "backward",
-                        "editorMode": "builder",
-                        "expr": "{app=\"muffin-currency\"} |= ``",
-                        "queryType": "range"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": [
-                {
-                  "kind": "extractFields",
-                  "spec": {
-                    "id": "extractFields",
-                    "options": {
-                      "delimiter": ",",
-                      "format": "json",
-                      "jsonPaths": [
-                        {
-                          "alias": "Level",
-                          "path": "level"
-                        },
-                        {
-                          "alias": "Trace id",
-                          "path": "traceId"
-                        },
-                        {
-                          "alias": "Span id",
-                          "path": "spanId"
-                        }
-                      ],
-                      "keepTime": false,
-                      "replace": false,
-                      "source": "labels"
-                    }
-                  }
-                },
-                {
-                  "kind": "organize",
-                  "spec": {
-                    "id": "organize",
-                    "options": {
-                      "excludeByName": {
-                        "id": true,
-                        "labels": true,
-                        "level": false,
-                        "tsNs": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {
-                        "Level": 2,
-                        "Line": 3,
-                        "Span id": 7,
-                        "Time": 1,
-                        "Trace id": 6,
-                        "id": 5,
-                        "labels": 0,
-                        "tsNs": 4
-                      },
-                      "orderByMode": "manual",
-                      "renameByName": {
-                        "labels": "",
-                        "level": ""
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "description": "",
-          "id": 15,
-          "links": [],
-          "title": "Logs",
-          "vizConfig": {
-            "group": "table",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "filterable": true,
-                    "footer": {
-                      "reducers": []
-                    },
-                    "hideFrom": {
-                      "viz": false
-                    },
-                    "inspect": false,
-                    "wrapHeaderText": false,
-                    "wrapText": true
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Time"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 160
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Line"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 438
-                      }
-                    ]
-                  },
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Level"
-                    },
-                    "properties": [
-                      {
-                        "id": "custom.width",
-                        "value": 81
-                      }
-                    ]
-                  }
-                ]
-              },
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true,
-                "sortBy": [
-                  {
-                    "desc": true,
-                    "displayName": "Time"
-                  }
-                ]
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
-      },
       "panel-16": {
         "kind": "Panel",
         "spec": {
@@ -250,13 +62,14 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by(method, status, path) (rate(muffin_currency_requests_total{service=\"muffin-currency\"}[$__rate_interval]))",
+                        "expr": "sum by(method, status, path) (rate(monitoring_http_request_duration_seconds_count{service_name=\"muffin-currency\"}[$__rate_interval]))",
+                        "instant": false,
                         "legendFormat": "{{method}} {{status}} {{path}}",
                         "range": true
                       },
                       "version": "v0"
                     },
-                    "refId": "A"
+                    "refId": "B"
                   }
                 }
               ],
@@ -365,7 +178,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval]))",
+                        "expr": "sum by(method, status, uri) (rate(monitoring_http_server_requests_seconds_count{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval]))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -386,7 +199,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval]))",
+                        "expr": "sum by(method, status, uri) (rate(monitoring_http_server_requests_seconds_count{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval]))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -407,7 +220,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by(method, status, uri) (rate(http_server_requests_seconds_count{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval]))",
+                        "expr": "sum by(method, status, uri) (rate(monitoring_http_server_requests_seconds_count{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval]))",
                         "instant": false,
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
@@ -524,7 +337,7 @@
                       "spec": {
                         "direction": "backward",
                         "editorMode": "builder",
-                        "expr": "{app=\"muffin-wallet\"} |= ``",
+                        "expr": "{level=\"$level\", trace_id=\"$traceId\"} |= ``",
                         "queryType": "range"
                       },
                       "version": "v0"
@@ -549,11 +362,11 @@
                         },
                         {
                           "alias": "Trace id",
-                          "path": "traceId"
+                          "path": "trace_id"
                         },
                         {
                           "alias": "Span id",
-                          "path": "spanId"
+                          "path": "span_id"
                         }
                       ],
                       "keepTime": false,
@@ -563,11 +376,28 @@
                   }
                 },
                 {
+                  "kind": "extractFields",
+                  "spec": {
+                    "id": "extractFields",
+                    "options": {
+                      "delimiter": ",",
+                      "format": "json",
+                      "jsonPaths": [
+                        {
+                          "path": "body"
+                        }
+                      ],
+                      "source": "Line"
+                    }
+                  }
+                },
+                {
                   "kind": "organize",
                   "spec": {
                     "id": "organize",
                     "options": {
                       "excludeByName": {
+                        "Line": true,
                         "id": true,
                         "labels": true,
                         "level": false,
@@ -576,13 +406,14 @@
                       "includeByName": {},
                       "indexByName": {
                         "Level": 2,
-                        "Line": 3,
-                        "Span id": 7,
+                        "Line": 4,
+                        "Span id": 8,
                         "Time": 1,
-                        "Trace id": 6,
-                        "id": 5,
+                        "Trace id": 7,
+                        "body": 3,
+                        "id": 6,
                         "labels": 0,
-                        "tsNs": 4
+                        "tsNs": 5
                       },
                       "orderByMode": "manual",
                       "renameByName": {
@@ -674,6 +505,30 @@
                         "value": 81
                       }
                     ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Trace id"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 276
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "body"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 763
+                      }
+                    ]
                   }
                 ]
               },
@@ -711,7 +566,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"5..\"})",
+                        "expr": "sum by (service, pod) (monitoring_http_server_requests_seconds_count{service_name=\"muffin-wallet\", status=~\"5..\"})",
                         "legendFormat": "{{pod}}",
                         "range": true
                       },
@@ -795,7 +650,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by (service, pod) (http_server_requests_seconds_count{service=\"muffin-wallet\", status=~\"4..\"})",
+                        "expr": "sum by (service_name, pod) (monitoring_http_server_requests_seconds_count{service_name=\"muffin-wallet\", status=~\"4..\"})",
                         "legendFormat": "{{pod}}",
                         "range": true
                       },
@@ -879,7 +734,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "histogram_quantile(0.99, sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval])))",
+                        "expr": "histogram_quantile(0.99, sum by(le, method, status, uri) (rate(monitoring_http_server_requests_seconds_bucket{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallets\"}[$__rate_interval])))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -900,7 +755,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval])))",
+                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(monitoring_http_server_requests_seconds_bucket{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}\"}[$__rate_interval])))",
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
                       },
@@ -921,7 +776,7 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(http_server_requests_seconds_bucket{service=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval])))",
+                        "expr": "histogram_quantile(0.99,sum by(le, method, status, uri) (rate(monitoring_http_server_requests_seconds_bucket{service_name=\"muffin-wallet\", uri=\"/v1/muffin-wallet/{id}/transaction\"}[$__rate_interval])))",
                         "instant": false,
                         "legendFormat": "{{method}} {{status}} {{uri}}",
                         "range": true
@@ -1007,7 +862,8 @@
                       "kind": "DataQuery",
                       "spec": {
                         "editorMode": "code",
-                        "expr": "sum by (service) (hikaricp_connections_active{service=\"muffin-wallet\"})",
+                        "exemplar": false,
+                        "expr": "sum by (service_name) (monitoring_hikaricp_connections_active{service_name=\"muffin-wallet\"})",
                         "legendFormat": "All pods",
                         "range": true
                       },
@@ -1102,7 +958,103 @@
           }
         }
       },
-      "panel-27": {
+      "panel-29": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "P214B5B846CF3925F"
+                      },
+                      "group": "tempo",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "filters": [
+                          {
+                            "id": "5b3ba1e3",
+                            "operator": "=",
+                            "scope": "span"
+                          }
+                        ],
+                        "limit": 20,
+                        "metricsQueryType": "range",
+                        "query": "$traceId",
+                        "queryType": "traceql",
+                        "serviceMapUseNativeHistograms": false,
+                        "tableType": "traces"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "logs": true,
+                        "parentSpanID": true,
+                        "serviceTags": true,
+                        "tags": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {
+                        "parentSpanID": "",
+                        "serviceName": "Service",
+                        "spanID": "Span id",
+                        "traceID": "Trace id"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 29,
+          "links": [],
+          "title": "Traces",
+          "vizConfig": {
+            "group": "traces",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "spanFilters": {
+                  "criticalPathOnly": false,
+                  "matchesOnly": false,
+                  "serviceNameOperator": "=",
+                  "spanNameOperator": "=",
+                  "tags": [
+                    {
+                      "id": "ae094b10-6d5",
+                      "operator": "="
+                    }
+                  ]
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-30": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -1122,7 +1074,7 @@
                       "spec": {
                         "direction": "backward",
                         "editorMode": "builder",
-                        "expr": "{level=\"$level\", traceId=\"$traceId\"} |= ``",
+                        "expr": "{service_name=\"muffin-wallet\"} |= ``",
                         "queryType": "range"
                       },
                       "version": "v0"
@@ -1147,11 +1099,11 @@
                         },
                         {
                           "alias": "Trace id",
-                          "path": "traceId"
+                          "path": "trace_id"
                         },
                         {
                           "alias": "Span id",
-                          "path": "spanId"
+                          "path": "span_id"
                         }
                       ],
                       "keepTime": false,
@@ -1161,11 +1113,28 @@
                   }
                 },
                 {
+                  "kind": "extractFields",
+                  "spec": {
+                    "id": "extractFields",
+                    "options": {
+                      "delimiter": ",",
+                      "format": "json",
+                      "jsonPaths": [
+                        {
+                          "path": "body"
+                        }
+                      ],
+                      "source": "Line"
+                    }
+                  }
+                },
+                {
                   "kind": "organize",
                   "spec": {
                     "id": "organize",
                     "options": {
                       "excludeByName": {
+                        "Line": true,
                         "id": true,
                         "labels": true,
                         "level": false,
@@ -1174,13 +1143,14 @@
                       "includeByName": {},
                       "indexByName": {
                         "Level": 2,
-                        "Line": 3,
-                        "Span id": 1,
-                        "Time": 4,
-                        "Trace id": 0,
-                        "id": 7,
-                        "labels": 5,
-                        "tsNs": 6
+                        "Line": 4,
+                        "Span id": 8,
+                        "Time": 1,
+                        "Trace id": 7,
+                        "body": 3,
+                        "id": 6,
+                        "labels": 0,
+                        "tsNs": 5
                       },
                       "orderByMode": "manual",
                       "renameByName": {
@@ -1194,7 +1164,7 @@
             }
           },
           "description": "",
-          "id": 27,
+          "id": 30,
           "links": [],
           "title": "Logs",
           "vizConfig": {
@@ -1245,7 +1215,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 160
+                        "value": 94
                       }
                     ]
                   },
@@ -1257,7 +1227,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 686
+                        "value": 438
                       }
                     ]
                   },
@@ -1269,7 +1239,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 67
+                        "value": 81
                       }
                     ]
                   },
@@ -1281,19 +1251,19 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 281
+                        "value": 277
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "Span id"
+                      "options": "body"
                     },
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 139
+                        "value": 299
                       }
                     ]
                   }
@@ -1314,7 +1284,7 @@
           }
         }
       },
-      "panel-28": {
+      "panel-31": {
         "kind": "Panel",
         "spec": {
           "data": {
@@ -1359,11 +1329,11 @@
                         },
                         {
                           "alias": "Trace id",
-                          "path": "traceId"
+                          "path": "trace_id"
                         },
                         {
                           "alias": "Span id",
-                          "path": "spanId"
+                          "path": "span_id"
                         }
                       ],
                       "keepTime": false,
@@ -1373,11 +1343,28 @@
                   }
                 },
                 {
+                  "kind": "extractFields",
+                  "spec": {
+                    "id": "extractFields",
+                    "options": {
+                      "delimiter": ",",
+                      "format": "json",
+                      "jsonPaths": [
+                        {
+                          "path": "body"
+                        }
+                      ],
+                      "source": "Line"
+                    }
+                  }
+                },
+                {
                   "kind": "organize",
                   "spec": {
                     "id": "organize",
                     "options": {
                       "excludeByName": {
+                        "Line": true,
                         "id": true,
                         "labels": true,
                         "level": false,
@@ -1386,13 +1373,14 @@
                       "includeByName": {},
                       "indexByName": {
                         "Level": 2,
-                        "Line": 3,
-                        "Span id": 1,
-                        "Time": 4,
-                        "Trace id": 0,
-                        "id": 7,
-                        "labels": 5,
-                        "tsNs": 6
+                        "Line": 4,
+                        "Span id": 8,
+                        "Time": 1,
+                        "Trace id": 7,
+                        "body": 3,
+                        "id": 6,
+                        "labels": 0,
+                        "tsNs": 5
                       },
                       "orderByMode": "manual",
                       "renameByName": {
@@ -1406,7 +1394,7 @@
             }
           },
           "description": "",
-          "id": 28,
+          "id": 31,
           "links": [],
           "title": "Logs",
           "vizConfig": {
@@ -1457,7 +1445,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 160
+                        "value": 94
                       }
                     ]
                   },
@@ -1469,7 +1457,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 711
+                        "value": 438
                       }
                     ]
                   },
@@ -1481,7 +1469,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 63
+                        "value": 81
                       }
                     ]
                   },
@@ -1493,19 +1481,19 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 281
+                        "value": 276
                       }
                     ]
                   },
                   {
                     "matcher": {
                       "id": "byName",
-                      "options": "Span id"
+                      "options": "body"
                     },
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 139
+                        "value": 763
                       }
                     ]
                   }
@@ -1525,117 +1513,143 @@
             "version": "12.3.1"
           }
         }
-      },
-      "panel-29": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "datasource": {
-                        "name": "P92163275D6A014C9"
-                      },
-                      "group": "zipkin",
-                      "kind": "DataQuery",
-                      "spec": {
-                        "query": "$traceId",
-                        "queryType": "traceID"
-                      },
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": [
-                {
-                  "kind": "organize",
-                  "spec": {
-                    "id": "organize",
-                    "options": {
-                      "excludeByName": {
-                        "logs": true,
-                        "parentSpanID": true,
-                        "serviceTags": true,
-                        "tags": true
-                      },
-                      "includeByName": {},
-                      "indexByName": {},
-                      "renameByName": {
-                        "parentSpanID": "",
-                        "serviceName": "Service",
-                        "spanID": "Span id",
-                        "traceID": "Trace id"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "description": "",
-          "id": 29,
-          "links": [],
-          "title": "Traces",
-          "vizConfig": {
-            "group": "table",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "footer": {
-                      "reducers": []
-                    },
-                    "hideFrom": {
-                      "viz": false
-                    },
-                    "inspect": false
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  }
-                },
-                "overrides": []
-              },
-              "options": {
-                "cellHeight": "sm",
-                "showHeader": true
-              }
-            },
-            "version": "12.3.1"
-          }
-        }
       }
     },
     "layout": {
       "kind": "GridLayout",
       "spec": {
-        "items": []
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-29"
+              },
+              "height": 16,
+              "width": 24,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-21"
+              },
+              "height": 6,
+              "width": 24,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-31"
+              },
+              "height": 8,
+              "width": 24,
+              "x": 0,
+              "y": 22
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-20"
+              },
+              "height": 7,
+              "width": 8,
+              "x": 0,
+              "y": 30
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-30"
+              },
+              "height": 7,
+              "width": 16,
+              "x": 8,
+              "y": 30
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-16"
+              },
+              "height": 7,
+              "width": 8,
+              "x": 0,
+              "y": 37
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-24"
+              },
+              "height": 7,
+              "width": 8,
+              "x": 8,
+              "y": 37
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-22"
+              },
+              "height": 7,
+              "width": 4,
+              "x": 16,
+              "y": 37
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-23"
+              },
+              "height": 7,
+              "width": 4,
+              "x": 20,
+              "y": 37
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-25"
+              },
+              "height": 7,
+              "width": 8,
+              "x": 0,
+              "y": 44
+            }
+          }
+        ]
       }
     },
     "links": [],
@@ -1687,8 +1701,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "697f9b86741b6ba6cc185e3a35d31d98",
-            "value": "697f9b86741b6ba6cc185e3a35d31d98"
+            "text": "24566e82286057febe0c392d6c5a0f12",
+            "value": "24566e82286057febe0c392d6c5a0f12"
           },
           "hide": "dontHide",
           "includeAll": false,

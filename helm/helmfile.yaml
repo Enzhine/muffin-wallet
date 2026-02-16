@@ -1,0 +1,85 @@
+repositories:
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+  - name: open-telemetry
+    url: https://open-telemetry.github.io/opentelemetry-helm-charts
+  - name: grafana-community
+    url: https://grafana-community.github.io/helm-charts
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+releases:
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    values:
+      - crds:
+          enabled: true
+    wait: true
+    timeout: 120
+    createNamespace: true
+
+  - name: otel-operator
+    namespace: monitoring
+    chart: open-telemetry/opentelemetry-operator
+    values:
+      - ./monitoring/otel-values.yaml
+    wait: true
+    timeout: 120
+    createNamespace: true
+    needs:
+      - cert-manager/cert-manager
+
+  - name: prometheus-operator
+    namespace: monitoring
+    chart: prometheus-community/kube-prometheus-stack
+    values:
+      - ./monitoring/prometheus-values.yaml
+    wait: true
+    timeout: 300
+    createNamespace: false
+    needs:
+      - monitoring/otel-operator
+
+  - name: otel-collector
+    namespace: monitoring
+    chart: ./otel-collector
+    wait: true
+    timeout: 120
+    createNamespace: false
+    needs:
+      - monitoring/prometheus-operator
+
+  - name: loki
+    namespace: monitoring
+    chart: grafana/loki-stack
+    values:
+      - ./monitoring/loki-values.yaml
+    createNamespace: false
+    needs:
+      - monitoring/otel-collector
+
+  - name: tempo
+    namespace: monitoring
+    chart: grafana-community/tempo
+    values:
+      - ./monitoring/tempo-values.yaml
+    createNamespace: false
+    needs:
+      - monitoring/loki
+
+  - name: muffin-currency
+    namespace: default
+    chart: ./muffin-currency
+    createNamespace: false
+    needs:
+      - monitoring/tempo
+
+  - name: muffin-wallet
+    namespace: default
+    chart: ./muffin-wallet
+    createNamespace: false
+    needs:
+      - default/muffin-currency

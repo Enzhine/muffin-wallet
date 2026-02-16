@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: enzhine/muffin-currency
   pullPolicy: IfNotPresent
-  tag: "1.2.1"
+  tag: "1.2.2"
 
 imagePullSecrets: []
 
@@ -39,34 +39,22 @@ readinessProbe:
   initialDelaySeconds: 2
   periodSeconds: 5
 
+envFrom:
+  - configMapRef:
+      name: muffin-currency-env
+
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
 
-volumes:
-  - name: alloy-config-volume
-    configMap:
-      name: muffin-currency-alloy
-  - name: application-logs-volume
-    emptyDir: {}
+envsConfigMap:
+  name: muffin-currency-env
+  data:
+    SERVICE_NAME: muffin-currency
+    OTEL_EXPORTER_OTLP_ENDPOINT: otel-collector-collector.monitoring:4317
 
-volumeMounts:
-  - name: application-logs-volume
-    mountPath: /logs
+volumes: {}
 
-alloy:
-  image:
-    repository: grafana/alloy
-    tag: v1.13.0-rc.2
-  volumeMounts:
-    - name: alloy-config-volume
-      mountPath:  /etc/alloy
-    - name: application-logs-volume
-      mountPath: /var/log/app
-      readOnly: true
-  filesConfigMap:
-    name: muffin-currency-alloy
-    files:
-      - "config.alloy"
+volumeMounts: {}
